@@ -22,7 +22,7 @@ public class PusselSpel extends JPanel {
     private int dimension;
     private int[] brickor;
     private int brickStorlek;
-    private static int blankPos;
+    private int blankPos;
     private int marginal;
     private int spelplan;
     private boolean gameOver;
@@ -43,7 +43,7 @@ public class PusselSpel extends JPanel {
         brickor = new int[antalBrickorPerRad * antalBrickorPerRad];
         spelplan = (dimension +(-3 * marginal));
         brickStorlek = spelplan / antalBrickorPerRad;
-        gameOver = true;
+        newGame();
 
         addMouseListener(new MouseAdapter() {
             @Override
@@ -51,7 +51,6 @@ public class PusselSpel extends JPanel {
 
                 if (reset.contains(e.getPoint())) {
                     newGame();
-                    repaint();
                 }
 
                 if (gameOver) {
@@ -95,7 +94,6 @@ public class PusselSpel extends JPanel {
             }
         });
 
-        newGame();
     }
 
     private void newGame() {
